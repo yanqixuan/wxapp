@@ -21,7 +21,7 @@ const defaultImg={
 let core={
     env:env,
     defaultAlertMessage:defaultAlertMessage,
-    defaultShareText:defaultShareText[en],
+    defaultShareText:defaultShareText['en'],
     defaultBarTitle:defaultBarTitle['en'],
     defaultImg:defaultImg,
     // 定义生产坏境和开发环境

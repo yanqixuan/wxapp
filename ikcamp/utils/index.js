@@ -53,8 +53,46 @@ let util={
                 cb && cb();
             }
         })
+    },
+    //封装request方法
+    request(opt){
+        let {url,data,header,method,dataType,mock = false} = opt; //mock=true 为开发环境
+        let self = this;
+        return new Promise((resolve,reject)=>{
+            if(mock){
+                let res = {
+                    statusCode:200,
+                    data:Mock[url]   //取Mock对象中的url属性
+                }
+                if(res && res.statusCode === 200 && res.data){//接口请求成功
+                    resolve(res.data)
+                }else{  //接口请求不成功
+                    self.alert('提示',res)
+                    reject(res)
+                }
+            } else {
+                wx.request({
+                    url:url,
+                    data:data,
+                    header:header,
+                    method:method,
+                    dataType:dataType,
+                    success:function(res){
+                        if(res && res.statusCode == 200 && res.data){//接口请求成功
+                            resolve(res.data)
+                        }else{  //接口请求不成功
+                            self.alert('提示',res)
+                            reject(res);
+                        }
+                    },
+                    fail:function(err){
+                        self.log(err)
+                        self.alert('提示',err)
+                        reject(arr)
+                    }
+                })
+            }
+        })
     }
-
-
-    
 }
+export default util //抛出util对象
