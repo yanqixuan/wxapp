@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "tablebar":"../../componence/tablebar/index",
+    "icon":"../../componence/icon/index",
+    "newsBox":"../../componence/newsBox/index"
+  },
+  "enablePullDownRefresh":true,
+  "onReachBottomDistance":100
+}

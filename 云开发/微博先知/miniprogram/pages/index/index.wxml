@@ -1,0 +1,8 @@
+<block wx:for="{{mainNewList}}" wx:key="{{index}}" wx:for-item="newsItem">
+    <block wx:if="{{newItem.isShow}}">
+        <newsBox isOld="{{newsItem.isOld}}" title="{{newsItem.title}}" focusNum="{{newsItem.focusNum}}" time="{{newsItem.time}}" imgUrl="{{newsItem.image}}" subNews="{{newsItem.subNews}}" name="{{newsItem.setMan.nickname}}">
+    
+        </newsBox>
+    </block>
+</block>
+<tablebar isIndex="true"></tablebar>
