@@ -1,0 +1,1 @@
+<button type="warn" bindtap="http">点击执行http函数</button>
