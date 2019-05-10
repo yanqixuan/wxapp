@@ -1,34 +1,46 @@
-// pages/category/category.js
+// pages/address/address.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    category:[
-      { name: '果味', id: 'guowei' },
-      { name: '蔬菜', id: 'shucai' },
-      { name: '炒货', id: 'chaohuo' },
-      { name: '点心', id: 'dianxin' },
-      { name: '粗茶', id: 'cucha' },
-      { name: '淡饭', id: 'danfan' }
-    ],
-    curIndex:0,
-    toView:'danfan',
-    inScoll:false
+    address: {
+      name: '',
+      phone: '',
+      detail: ''
+    }
   },
-  switchTab(e){
-    console.log(e);
+  formSubmit() {
+    if(this.data.address.name&&this.data.address.phone&&this.data.address.detail){
+      wx.setStorage({
+        key:'address',
+        data:this.data.address,
+        success:(result)=>{
+          wx.navigateBack()
+        }
+      })
+    } else {
+      wx.showModal({
+        title:'提示',
+        content:'请补充信息',
+        showCancel:false
+      })
+    }
+  },
+  bindName(e){
     this.setData({
-      curIndex:e.target.dataset.index,
-      toView:e.target.dataset.id
+      'address.name':e.detail.value
     })
   },
-  scrollTab(e){
-    console.log(e);
-    console.log(this.data.detail);
+  bindPhone(e){
     this.setData({
-      // toView
+      'address.phone':e.detail.value
+    })
+  },
+  bindDetail(e){
+    this.setData({
+      'address.detail':e.detail.value
     })
   },
 
@@ -43,25 +55,14 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    let self = this
-    wx.request({
-      url:'http://www.gdfengshuo.com/api/wx/cate-detail.txt',
-      success(res){
-        self.setData({
-          detail:res.data
-        })
-        console.log(res);
-      }
-    })
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.setData({
-      toView:'danfan'
-    })
+
   },
 
   /**

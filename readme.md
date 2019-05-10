@@ -47,3 +47,33 @@
             }
         }
     })
+
+
+###跳转至tabbar页面
+- showModal API
+- wx.switchTab
+
+###设置data中对象的某一项值
+- 'address.name' = e.detail.value
+
+###setStorage,getStorage
+- wx.setStorage({                   
+        key:'address',  
+        data:this.data.address,
+        success:(result)=>{
+          wx.navigateBack()
+        }
+      })
+- wx.getStorage({
+      key:'address',
+      success:(result)=>{
+        // console.log(result)
+        this.setData({
+          address:result.data,
+          hasAddress:true
+        })
+      }
+    })
+
+### 获取用户信息
+- wx.getUserInfo
