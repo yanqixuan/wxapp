@@ -90,5 +90,15 @@ Page({
     }
     },
     )
+  },
+  goDiary(){
+    wx.navigateTo({
+      url: '../diary/index',
+      success: (result)=>{
+        
+      },
+      fail: ()=>{},
+      complete: ()=>{}
+    });
   }
 })
